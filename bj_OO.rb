@@ -117,8 +117,8 @@ class Game
   
   def initial_deal
     self.dealer_flag = nil
-    player.hand.clear if !player.hand.empty?
-    dealer.hand.clear if !dealer.hand.empty?
+    player.hand.clear unless player.hand.empty?
+    dealer.hand.clear unless dealer.hand.empty?
     2.times do
       player.deal_card(deck)
       dealer.deal_card(deck)
@@ -132,7 +132,7 @@ class Game
   end
   
   def player_turn
-    while !player.blackjack? && !player.bust?
+    until player.blackjack? || player.bust?
       begin
         puts "\n(H)it or (S)tay?"
         hit_stay = gets.chomp.upcase
