@@ -74,11 +74,7 @@ class Player
   
   def total
     total = 0
-    hand.each do |card| 
-      Deck::CARD_VALUES.each do |key, value|
-        total += value if key == card.chop
-      end
-    end
+    hand.each { |card| total += Deck::CARD_VALUES[card.chop] }
     if total > 21
       aces = hand.select { |card| card.chop == 'A' }
       aces.each do
