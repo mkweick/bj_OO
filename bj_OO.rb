@@ -79,7 +79,6 @@ class Player
         total += value if key == card.chop
       end
     end
-    
     if total > 21
       aces = hand.select { |card| card.chop == 'A' }
       aces.each do
@@ -198,5 +197,4 @@ end
 puts "Welcome to Blackjack"
 puts "Whats your name?"
 name = gets.chomp.upcase
-
 Game.new(name).play
