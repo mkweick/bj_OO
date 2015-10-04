@@ -2,9 +2,8 @@ class Deck
   CARD_VALUES = { "2" => 2, "3" => 3, "4" => 4, "5" => 5, "6" => 6, "7" => 7, 
                   "8" => 8, "9" => 9, "10" => 10, "J" => 10, "Q" => 10, 
                   "K" => 10, "A" => 11 }
-  SUITS = %w(♥ ♦ ♠ ♣)
   CARDS = %w(2 3 4 5 6 7 8 9 10 J Q K A)
-  
+  SUITS = %w(♥ ♦ ♠ ♣)
   attr_accessor :cards
   attr_reader :num_decks
   
@@ -198,7 +197,6 @@ class Game
       player_turn
       dealer_turn if !player.bust?
       display_result
-      p deck.cards.count
     end until deal_again? == 'N'
   end 
 end
