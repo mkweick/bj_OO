@@ -116,11 +116,6 @@ class Game
     @dealer_turn = nil
   end
   
-  def clear
-    system 'clear'
-  end
-  
-  # Clear hands and deal clockwise 1 card at a time for initial deal
   def initial_deal
     self.dealer_flag = nil
     player.hand.clear if !player.hand.empty?
@@ -132,7 +127,7 @@ class Game
   end
   
   def show_cards
-    clear
+    system 'clear'
     dealer_flag ? (puts dealer) : (dealer.hide_dealer_card)
     puts player
   end
