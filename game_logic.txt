@@ -1,0 +1,24 @@
+Dealer shuffles Deck. Dealer deals card face up to Player and Dealer. Dealer deals
+second card face up to Player and face down to Dealer. If player totals 21, they win
+with Blackjack. Player either hits or stays. If stay, Dealer plays until 17 
+or higher. If hit, player gets more cards until they stay or bust over 21. play again?
+
+class Card
+
+end
+
+class Deck
+
+end
+
+class Player
+
+end
+
+class Dealer
+
+end
+
+class Game
+
+end
