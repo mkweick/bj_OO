@@ -57,10 +57,9 @@ class Deck
 end
 
 class Player
-  attr_accessor :name, :hand, :deck
+  attr_accessor :name, :hand
   
-  def initialize(deck, name = "Dealer")
-    @deck = deck
+  def initialize(name = "Dealer")
     @name = name
     @hand = []
   end
@@ -69,7 +68,7 @@ class Player
     "\n#{name.capitalize}:\n  #{ hand.join("\n  ") }\nTotal = #{total}"
   end
   
-  def deal_card
+  def deal_card(deck)
     hand << deck.deal
   end
   
@@ -112,8 +111,8 @@ class Game
   
   def initialize(name)
     @deck = Deck.new
-    @player = Player.new(deck, name)
-    @dealer = Dealer.new(deck)
+    @player = Player.new(name)
+    @dealer = Dealer.new
     @dealer_turn = nil
   end
   
@@ -127,8 +126,8 @@ class Game
     player.hand.clear if !player.hand.empty?
     dealer.hand.clear if !dealer.hand.empty?
     2.times do
-      player.deal_card
-      dealer.deal_card
+      player.deal_card(deck)
+      dealer.deal_card(deck)
     end
   end
   
@@ -144,7 +143,7 @@ class Game
         puts "\n(H)it or (S)tay?"
         hit_stay = gets.chomp.upcase
       end until %w(H S).include? hit_stay
-      player.deal_card if hit_stay == 'H'
+      player.deal_card(deck) if hit_stay == 'H'
       show_cards
       break if hit_stay == 'S'
     end
@@ -157,7 +156,7 @@ class Game
       if dealer.total < 17
         puts "\nDealer is getting another card..."
         sleep 1
-        dealer.deal_card
+        dealer.deal_card(deck)
       end
       show_cards
     end until dealer.total > 16
